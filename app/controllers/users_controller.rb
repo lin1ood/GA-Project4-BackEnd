@@ -7,18 +7,18 @@ class UsersController < ApplicationController
   # user login
   def login
     puts '--- LOGIN ---'
-    # params.each do |i|
-    #   puts i
-    # end
+    params.each do |i|
+      puts i
+    end
+    #
+    puts params[:username]
+    puts params[:password]
     # #
-    # puts params[:user][:username]
-    # puts params[:user][:password]
-    # #
-    puts username: params[:user][:username]
-    puts password: params[:user][:password] #= 'Linwood'
-    puts user = User.find_by(username: params[:user][:username])
-    user = User.find_by(username: params[:user][:username])
-    if user && user.authenticate(params[:user][:password])
+    puts username: params[:username]
+    puts password: params[:password] #= 'Linwood'
+    puts user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
 
       puts user
       puts user.id
