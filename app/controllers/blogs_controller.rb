@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:update, :destroy]
   # before_action :authenticate_token
-  # before_action :authorize_user, except: [:show, :index]
+  # before_action :authorize_user, only: [:destroy]
 
   # GET /blogs
   def index
@@ -45,7 +45,17 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1
   def destroy
-    @blog.destroy
+    # is this the owner ???
+    authorize_user(get_current_user.id)
+
+    puts 'DELETE /blogs/id destroy ' + get_current_user.id.to_s
+    puts '@blog.user_id = ' + @blog.user_id.to_s
+
+    if @blog.user_id == get_current_user.id
+      @blog.destroy
+    else
+      render json: {status: :unprocessable_entity}
+    end
   end
 
   private
