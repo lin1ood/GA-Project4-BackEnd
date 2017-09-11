@@ -48,7 +48,11 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    #todo: add a white list for only allowing Gizmo users.....
+    puts params[:username]
+    puts params[:password]
+
+    @user = User.new(username: params[:username].to_s, password: params[:password])
     if @user.save
       render json: @user, status: :created
     else

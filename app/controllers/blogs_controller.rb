@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:update, :destroy]
   # before_action :authenticate_token
-  # before_action :authorize_user, only: [:destroy]
+  # before_action :authorize_user, only: [:create]
 
   # GET /blogs
   def index
@@ -25,7 +25,15 @@ class BlogsController < ApplicationController
 
   # POST /blogs
   def create
-    @blog = Blog.new(blog_params)
+    puts 'POST /blogs Create using ' + blog_params.to_s
+    puts 'author ' + params[:author].to_s
+    puts 'subject ' + params[:subject].to_s
+    puts 'content ' + params[:content].to_s
+    puts 'usr_id ' + get_current_user.id.to_s
+
+    authorize_user(get_current_user.id)
+
+    @blog = Blog.new(author: params[:author], subject: params[:subject], content: params[:content], user_id: get_current_user.id)
 
     if @blog.save
       render json: @blog, status: :created, location: @blog
