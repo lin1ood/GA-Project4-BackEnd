@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :update, :destroy]
+  before_action :set_blog, only: [:update, :destroy]
   # before_action :authenticate_token
-  # before_action :authorize_user, except: [:index]
+  # before_action :authorize_user, except: [:show, :index]
 
   # GET /blogs
   def index
@@ -12,7 +12,15 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    render json: @blog
+    puts '----- /blogs GET show ------'
+    # puts 'Current User.id = ' + get_current_user.id.to_s
+    # autorize current user by id
+    # if not a valid user will not come back
+    # for this render
+    puts 'GET_CURRENT_USER.ID = ' + get_current_user.id.to_s
+    authorize_user(get_current_user.id)
+    @user_blogs = User.find(params[:id]).blogs
+    render json: @user_blogs
   end
 
   # POST /blogs
