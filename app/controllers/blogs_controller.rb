@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :update, :destroy]
+  # before_action :authenticate_token
+  # before_action :authorize_user, except: [:index]
 
   # GET /blogs
   def index
