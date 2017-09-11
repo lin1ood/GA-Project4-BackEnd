@@ -1124,3 +1124,435 @@ Processing by UsersController#show as */*
 Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 0.6ms)
 
 
+Started POST "/users" for 127.0.0.1 at 2017-09-10 19:55:24 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Paula"], ["password_digest", "$2a$10$OpZ6MFnkO4xLE7BttTy/vOCky45ygtmS3JKkTgasQ69OXhSwmYRxG"], ["created_at", "2017-09-10 23:55:25.021915"], ["updated_at", "2017-09-10 23:55:25.021915"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 87ms (Views: 0.7ms | ActiveRecord: 10.5ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started DELETE "/users/2" for 127.0.0.1 at 2017-09-10 19:57:11 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Filter chain halted as :authorize_user rendered or redirected
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 4.6ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/users/login" for 127.0.0.1 at 2017-09-10 19:59:19 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Paula"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Paula"], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 0.6ms | ActiveRecord: 4.1ms)
+
+
+Started DELETE "/users/login" for 127.0.0.1 at 2017-09-10 19:59:51 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}, "id"=>"login"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 12ms (ActiveRecord: 5.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=login):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started DELETE "/users/login" for 127.0.0.1 at 2017-09-10 20:00:02 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}, "id"=>"login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=login):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started DELETE "/users/2" for 127.0.0.1 at 2017-09-10 20:00:57 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 28ms (ActiveRecord: 12.4ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/users/login" for 127.0.0.1 at 2017-09-10 20:02:24 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Linwood"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Linwood"], ["LIMIT", 1]]
+Completed 200 OK in 81ms (Views: 0.6ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-09-10 20:02:46 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Linwood"], ["password_digest", "$2a$10$Q0XYQyHHQ7Bal5Z2B3IN1uoj48mFnbmmoT64uxuM.BAX9YSLx69Ka"], ["created_at", "2017-09-11 00:02:46.427018"], ["updated_at", "2017-09-11 00:02:46.427018"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 87ms (Views: 0.4ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-09-10 20:03:05 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Paula", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Paula"], ["password_digest", "$2a$10$Bc8u6vn1mNgeB5mHakiHbu0ZFlLlg9S84W0Md8jmYs.1sZdLUu1iC"], ["created_at", "2017-09-11 00:03:05.587316"], ["updated_at", "2017-09-11 00:03:05.587316"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 74ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-09-10 20:03:17 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Bill", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Bill"], ["password_digest", "$2a$10$uDV1yL.InGVGcGh73fCi4uaCzbXC4xBti5jQYTZ7EG3Vy1HWuqbAu"], ["created_at", "2017-09-11 00:03:17.473656"], ["updated_at", "2017-09-11 00:03:17.473656"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 75ms (Views: 0.4ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-09-10 20:03:24 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Sue", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Sue"], ["password_digest", "$2a$10$2VxHep3kepr8Z5YWUK/X9uyTXgMbVl1f9Bk3Nnqc92pr8nUTQDiVi"], ["created_at", "2017-09-11 00:03:24.413510"], ["updated_at", "2017-09-11 00:03:24.413510"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 72ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2017-09-10 20:03:59 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}, "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Filter chain halted as :authorize_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users" for 127.0.0.1 at 2017-09-10 20:04:16 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/users"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-09-10 20:04:21 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-09-10 20:06:42 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Pabst", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Pabst"], ["password_digest", "$2a$10$7Xw8URx7F53QuAR.zWO6vu9UhHicitPpKcy4S0AHtrQUJCDUbTEAq"], ["created_at", "2017-09-11 00:06:42.135561"], ["updated_at", "2017-09-11 00:06:42.135561"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 75ms (Views: 0.4ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2017-09-10 20:07:21 -0400
+Processing by UsersController#login as */*
+  Parameters: {"user"=>{"username"=>"Pabst", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Pabst"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Pabst"], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/login" for 127.0.0.1 at 2017-09-10 20:07:44 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Pabst", "password"=>"[FILTERED]"}, "id"=>"login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=login):
+  
+app/controllers/users_controller.rb:94:in `set_user'
+Started DELETE "/users/7" for 127.0.0.1 at 2017-09-10 20:07:56 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Pabst", "password"=>"[FILTERED]"}, "id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Filter chain halted as :authorize_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/7" for 127.0.0.1 at 2017-09-10 20:08:14 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Pabst", "password"=>"[FILTERED]"}, "id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 10ms (ActiveRecord: 7.0ms)
+
+
+Started DELETE "/users" for 127.0.0.1 at 2017-09-10 20:08:29 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/users"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-09-10 20:08:34 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2017-09-10 20:09:24 -0400
+Processing by UsersController#login as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Linwood"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Linwood"], ["LIMIT", 1]]
+Completed 200 OK in 68ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/" for 127.0.0.1 at 2017-09-10 20:09:47 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Linwood"], ["password_digest", "$2a$10$bn1R6RwEWP.PEMgWdIqsq.BYPD0UW5mPdVTdG9v8o/S8unLED8hfG"], ["created_at", "2017-09-11 00:09:48.003982"], ["updated_at", "2017-09-11 00:09:48.003982"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 70ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at 2017-09-10 20:10:05 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users/1"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/1" for 127.0.0.1 at 2017-09-10 20:10:05 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users/1"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/2" for 127.0.0.1 at 2017-09-10 20:10:08 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/users/2"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-09-10 20:10:25 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2017-09-10 20:10:42 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"username"=>"Linwood", "password"=>"[FILTERED]"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Filter chain halted as :authorize_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-09-10 20:11:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/blogs"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/blogs" for 127.0.0.1 at 2017-09-10 20:11:34 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/blogs"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.1) lib/rack/cors.rb:93:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/blogs" for 127.0.0.1 at 2017-09-10 20:17:34 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BlogsController#index as */*
+  [1m[36mBlog Load (1.0ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+Completed 200 OK in 35ms (Views: 28.3ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-09-10 20:17:48 -0400
+Processing by BlogsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (0.6ms)[0m  [1m[34mSELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-09-10 20:18:20 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BlogsController#index as */*
+  [1m[36mBlog Load (1.2ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+Completed 200 OK in 40ms (Views: 33.5ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-09-10 20:18:20 -0400
+Processing by BlogsController#index as */*
+  [1m[36mBlog Load (0.9ms)[0m  [1m[34mSELECT "blogs".* FROM "blogs"[0m
+Completed 200 OK in 33ms (Views: 26.6ms | ActiveRecord: 5.6ms)
+
+
