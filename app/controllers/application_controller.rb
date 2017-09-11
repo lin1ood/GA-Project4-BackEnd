@@ -24,6 +24,7 @@ class ApplicationController < ActionController::API
     end
 
     def get_current_user
+      puts '---- GET_CURRENT_USER ---'
       return if !bearer_token
       decoded_jwt = decode_token(bearer_token)
       User.find(decoded_jwt[0]["user"]["id"])
@@ -41,5 +42,13 @@ class ApplicationController < ActionController::API
         puts "params: #{params[:id]}"
         render json: { status: 401, message: 'Unauthorized' } unless get_current_user.id == params[:id].to_i
       end
+
+      def authorize_user(id)
+        puts "AUTHORIZE USER"
+        puts "user id: #{get_current_user.id}"
+        puts "params: #{params[:id]}"
+        render json: { status: 401, message: 'Unauthorized' } unless get_current_user.id == id
+      end
+
 
 end

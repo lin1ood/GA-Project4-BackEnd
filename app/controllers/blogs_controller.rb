@@ -12,7 +12,13 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    render json: @blog
+    # puts 'Current User.id = ' + get_current_user.id.to_s
+    # autorize current user by id
+    # if not a valid user will not come back
+    # for this render
+    authorize_user(get_current_user.id)
+    @user_blogs = User.find(params[:id]).blogs
+    render json: @user_blogs
   end
 
   # POST /blogs
