@@ -5,13 +5,31 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+# Rails.application.config.middleware.insert_before 0, Rack::Cors do
+#   allow do
+#     # todo: will work this out later as not certain with heroku will do
+#     origins '*'
+#
+#     resource '*',
+#       headers: :any,
+#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
+#   end
+# end
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # todo: will work this out later as not certain with heroku will do
     origins '*'
 
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
+      # methods: [:get, :options, :head]
+    end
+
+    # allow do
+    #   origins 'http://localhost:4040', 'https://gizmo-blogger-frontend.herokuapp.com/'
+    #
+    #   resource '*',
+    #     headers: :any,
+    #     methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    #   end
 end
