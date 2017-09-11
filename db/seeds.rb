@@ -5,10 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-100.times do
+10.times do
   Blog.create(
-    subject: Faker::Hacker.phrases,
     author: Faker::Name.name,
-    content: Faker::Lorem.paragraph
+    subject: Faker::Lorem.paragraph,
+    content: Faker::Hacker.phrases,
+    user_id: 1
   )
 end
