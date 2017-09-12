@@ -23,3 +23,10 @@
 * Create and add collaborators to GIT for this project.
 6. As a developer I want to have my Backend setup with Rails.
 * Use the Rails dev model for creating the the backend application.
+
+## Git Repository
+https://github.com/lin1ood/GA-Project4-BackEnd
+
+## Heroku Deployment
+https://gizmo-blogger-backend.herokuapp.com/
+
