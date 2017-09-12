@@ -44,11 +44,21 @@ class BlogsController < ApplicationController
 
   # PATCH/PUT /blogs/1
   def update
-    if @blog.update(blog_params)
-      render json: @blog
+    puts '---- PUT /blogs/:id update ---'
+    puts 'The passed params are: ' + blog_params.to_s
+    puts '@blog = ' + @blog.to_s
+
+    #only if I own it.....
+    if @blog.user_id == get_current_user.id
+      if @blog.update(blog_params)
+        render json: @blog
+      else
+        render json: @blog.errors, status: :unprocessable_entity
+      end
     else
       render json: @blog.errors, status: :unprocessable_entity
     end
+
   end
 
   # DELETE /blogs/1
