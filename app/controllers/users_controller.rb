@@ -11,19 +11,19 @@ class UsersController < ApplicationController
       puts i
     end
     #
-    puts params[:username]
-    puts params[:password]
-    # #
-    puts username: params[:username]
-    puts password: params[:password] #= 'Linwood'
-    puts user = User.find_by(username: params[:username])
+    # puts params[:username]
+    # puts params[:password]
+    # # #
+    # puts username: params[:username]
+    # puts password: params[:password] #= 'Linwood'
+    # puts user = User.find_by(params[:username])
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-
-      puts user
-      puts user.id
-      puts user.username
-
+      #
+      # puts user
+      # puts user.id
+      # puts user.username
+      #
       token = create_token(user.id, user.username)
       render json: {status: 200, token: token, user: user}
     else
