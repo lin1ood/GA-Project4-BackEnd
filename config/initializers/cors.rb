@@ -17,13 +17,21 @@
 # end
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ['https://gizmo-blogger-backend.herokuapp.com', 'localhost:3001', 'nc-76-4-31-245.dhcp.embarqhsd.net']
+    origins ['https://gizmo-blogger-backend.herokuapp.com', 'localhost:3001']
 
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
       # methods: [:get, :options, :head]
     end
+    allow do
+      origins '*'
+
+      resource '*',
+        headers: :any,
+        methods: [:get, :options, :head]
+        # methods: [:get, :options, :head]
+      end
 
     # allow do
     #   origins 'http://localhost:4040', 'https://gizmo-blogger-frontend.herokuapp.com/'
