@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   # user login
   def login
     puts '--- LOGIN ---'
-    params.each do |i|
-      puts i
-    end
+    # params.each do |i|
+    #   puts i
+    # end
     #
     # puts params[:username]
     # puts params[:password]
